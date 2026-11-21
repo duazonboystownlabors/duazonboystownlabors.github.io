@@ -242,18 +242,20 @@ footer a.ls{color:var(--accent);text-decoration:none}
     <span><b>LivingSeed</b> · Revival Labors Liberia · Duazon/Boystown Field · <a class="ls" href="https://livingseed.org/" target="_blank" rel="noopener">livingseed.org</a></span>
     <a class="staff" id="staff" target="_blank" rel="noopener" title="For registered team members">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Team sign-in</a>
+    <a class="staff" id="staffInstall" target="_blank" rel="noopener" title="For registered team members: put the app on your phone">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M12 7v7M9 11l3 3 3-3"/></svg>Team: install the app</a>
   </div>
 </footer>
 
 <script>
-/* ===== Paste your discipleship app link (the .../exec URL) between the quotes ===== */
-var APP_URL = "PASTE_YOUR_WEB_APP_URL_HERE";
+/* ===== The team's discipleship app (installable, on GitHub Pages) ===== */
+var APP_URL = "https://duazonboystownlabors.github.io/duazonapp/";
 /* Photo at the top of the classes section. Swap for your own photo link any time. */
 var CLASS_PHOTO = "";   // leave "" to keep the built-in photo
 /* ================================================================================== */
 (function(){
-  ["staff","signinTop"].forEach(function(id){ var a = document.getElementById(id);
-    if (/^https:\/\//.test(APP_URL)) a.href = APP_URL;
+  ["staff","signinTop","staffInstall"].forEach(function(id){ var a = document.getElementById(id);
+    if (/^https:\/\//.test(APP_URL)) a.href = APP_URL.replace(/\/?$/, "/") + (id === "staffInstall" ? "install.html" : "");
     else { a.href = "#"; a.removeAttribute("target"); a.addEventListener("click", function(e){ e.preventDefault(); a.title = "Add your app link (APP_URL) to turn this on"; }); } });
   var img = document.getElementById("classPhoto");
   if (CLASS_PHOTO) img.src = CLASS_PHOTO;
